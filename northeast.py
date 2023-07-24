@@ -35,8 +35,9 @@ data2 = pd.read_csv(csv_file_path2)
  # REMINDER: Slide index is 0-based, so slide 7 corresponds to index 6
 slide_index = 7 
 slide_index2= 8
-slide_index3= 16
+slide_index3= 17
 slide_index4 = 3
+slide_index5 = 9
 
 #DATA SOURCE
 data = pd.read_csv(csv_file_path)
@@ -47,33 +48,45 @@ data = pd.read_csv(csv_file_path)
 
 #HIGH TEMPS
 cell_value_alb = str(data.iloc[0, 2])  # Assuming the value is in cell C2 (row 1, column 2)
-cell_value_buf = str(data.iloc[4, 2])
-cell_value_syr = str(data.iloc[30, 2])
-cell_value_bos = str(data.iloc[3, 2])
-cell_value_nyc = str(data.iloc[20, 2])
-cell_value_phl = str(data.iloc[24, 2])
-cell_value_col = str(data.iloc[9, 2])
-cell_value_was = str(data.iloc[32, 2])
+cell_value_buf = str(data.iloc[7, 2])
+cell_value_syr = str(data.iloc[39, 2])
+cell_value_bos = str(data.iloc[4, 2])
+cell_value_nyc = str(data2.iloc[0, 2])
+cell_value_phl = str(data.iloc[32, 2])
+cell_value_col = str(data.iloc[13, 2])
+cell_value_was = str(data.iloc[41, 2])
 
 #LOW TEMPS
 cell_value_alb_low = str(data.iloc[0, 3])  # Assuming the value is in cell C2 (row 1, column 2)
-cell_value_buf_low = str(data.iloc[4, 3])
-cell_value_syr_low = str(data.iloc[30, 3])
-cell_value_bos_low = str(data.iloc[3, 3])
-cell_value_nyc_low = str(data.iloc[20, 3])
-cell_value_phl_low = str(data.iloc[24, 3])
-cell_value_col_low = str(data.iloc[9, 3])
-cell_value_was_low = str(data.iloc[32, 3])
+cell_value_buf_low = str(data.iloc[7, 3])
+cell_value_syr_low = str(data.iloc[39, 3])
+cell_value_bos_low = str(data.iloc[4, 3])
+cell_value_nyc_low = str(data.iloc[27, 3])
+cell_value_phl_low = str(data.iloc[32, 3])
+cell_value_col_low = str(data.iloc[13, 3])
+cell_value_was_low = str(data.iloc[41, 3])
 
 #WEATHER CONDITIONS
 alb_weather = str(data.iloc[0,4])
-buf_weather = str(data.iloc[4,4])
-syr_weather = str(data.iloc[30,4])
-bos_weather = str(data.iloc[3,4])
-nyc_weather = str(data.iloc[20,4])
-phl_weather = str(data.iloc[24,4])
-col_weather = str(data.iloc[9,4])
-was_weather = str(data.iloc[32,4])
+buf_weather = str(data.iloc[7,4])
+syr_weather = str(data.iloc[39,4])
+bos_weather = str(data.iloc[4,4])
+nyc_weather = str(data.iloc[27,4])
+phl_weather = str(data.iloc[32,4])
+col_weather = str(data.iloc[13,4])
+was_weather = str(data.iloc[41,4])
+
+#DAILY RAINFALL
+rain_value_alb = str(data.iloc[0, 5])  # Assuming the value is in cell C2 (row 1, column 2)
+rain_value_buf = str(data.iloc[7, 5])
+rain_value_syr = str(data.iloc[39, 5])
+rain_value_bos = str(data.iloc[4, 5])
+rain_value_nyc = str(data.iloc[27, 5])
+rain_value_phl = str(data.iloc[32, 5])
+rain_value_col = str(data.iloc[13, 5])
+rain_value_was = str(data.iloc[41, 5])
+
+
 
 presentation = Presentation(powerpoint_file_path)
 
@@ -370,7 +383,7 @@ csv_file_path2 = "/Users/erick/Desktop/new york_7_day_forecast.csv"
 data2 = pd.read_csv(csv_file_path2)
 
 #ASSIGN HIGH TEMP VALUES
-day1_high_value = str(data.iloc[20, 2])
+day1_high_value = str(data2.iloc[0, 2])
 day2_high_value = str(data2.iloc[1, 2])
 day3_high_value = str(data2.iloc[2, 2])
 day4_high_value = str(data2.iloc[3, 2])
@@ -619,7 +632,7 @@ data3 = pd.read_csv(csv_file_path3)
 
 #ASSIGN HIGH TEMP VALUES
 daypart1_value = str(data3.iloc[1, 1])
-daypart2_value = str(data.iloc[20, 2])
+daypart2_value = str(data2.iloc[0, 2])
 daypart3_value = str(data3.iloc[1, 5])
 
 #WEATHER CONDITIONS
@@ -689,6 +702,124 @@ for slide in presentation.slides:
         elif shape.name == "daypart3_icon":
             shape.element.getparent().remove(shape.element)
             slide.shapes.add_picture(daypart3_image_file, shape.left, shape.top, shape.width, shape.height)
+
+
+# SLIDE NUMBER 10 BEGINS HERE **************************
+
+
+slide = presentation.slides[slide_index5]
+
+
+albany = 24  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox = slide.shapes[albany].text_frame
+
+buffalo = 15  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox2 = slide.shapes[buffalo].text_frame
+
+syracuse = 23  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox3 = slide.shapes[syracuse].text_frame
+
+boston = 25  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox4 = slide.shapes[boston].text_frame
+
+newyork = 13  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox5 = slide.shapes[newyork].text_frame
+
+philadelphia = 21  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox6 = slide.shapes[philadelphia].text_frame
+
+columbus = 17  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox7 = slide.shapes[columbus].text_frame
+
+washington = 19  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox8 = slide.shapes[washington].text_frame
+
+
+# In[253]:
+
+#CLEAR TEXT, ADD NEW VALUES
+textbox.clear()
+textbox.text = f'{rain_value_alb}"'
+textbox2.clear()
+textbox2.text = f'{rain_value_buf}"'
+textbox3.clear()
+textbox3.text = f'{rain_value_syr}"'
+textbox4.clear()
+textbox4.text = f'{rain_value_bos}"'
+textbox5.clear()
+textbox5.text = f'{rain_value_nyc}"'
+textbox6.clear()
+textbox6.text = f'{rain_value_phl}"'
+textbox7.clear()
+textbox7.text = f'{rain_value_col}"'
+textbox8.clear()
+textbox8.text = f'{rain_value_was}"'
+
+#FORMATTING NEW TEXT
+
+
+for paragraph in textbox.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox2.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox3.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox4.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox5.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+for paragraph in textbox6.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox7.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox8.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+
+
+
+
 
 #THIS UPDATES THE PRESENTATION
 updated_powerpoint_file_path = "/Users/erick/Desktop/Weather_Update.pptx"

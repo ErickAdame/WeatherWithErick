@@ -27,22 +27,26 @@ powerpoint_file_path = "/Users/erick/Desktop/Graphics_Templates/email_template.p
 
 csv_file_path = "/Users/erick/Desktop/day_part_data.csv"
 csv_file_path2 = "/Users/erick/Desktop/city_high_and Lows.csv"
+csv_file_path3 = "/Users/erick/Desktop/new york_7_day_forecast.csv"
 
 
 # Set the slide index and text box index of the PowerPoint slide to update
  # REMINDER: Slide index is 0-based, so slide 7 corresponds to index 6
 slide_index = 0
 slide_index2 = 1
+slide_index3 = 2
+slide_index4 = 3
 
 #READ THE DATA
 data = pd.read_csv(csv_file_path)
 data2 = pd.read_csv(csv_file_path2)
+data3 = pd.read_csv(csv_file_path3)
 
 
 
 #DAYPART TEMPS
 daypart1_value = str(data.iloc[1, 2])
-daypart2_value = str(data.iloc[1, 2])
+daypart2_value = str(data.iloc[1, 3])
 daypart3_value = str(data.iloc[1, 4])
 daypart4_value = str(data.iloc[1, 5])
 daypart5_value = str(data.iloc[1, 6])
@@ -53,11 +57,11 @@ daypart8_value = str(data.iloc[3, 4])
 daypart9_value = str(data.iloc[3, 5])
 daypart10_value = str(data.iloc[3,6])
 
-daypart11_value= str(data2.iloc[20,2])
-daypart12_value = str(data2.iloc[20,3])
+daypart11_value= str(data3.iloc[0, 2])
+daypart12_value = str(data2.iloc[27,3])
 
-daypart13_value = str(data2.iloc[15,2])
-daypart14_value = str(data2.iloc[15,3])
+daypart13_value = str(data2.iloc[22,2])
+daypart14_value = str(data2.iloc[22,3])
 
 
 #DAYPART WEATHER
@@ -73,8 +77,41 @@ daypart8_weather = str(data.iloc[2,4])
 daypart9_weather = str(data.iloc[2,5])
 daypart10_weather = str(data.iloc[2,6])
 
-daya_weather = str(data2.iloc[20,4])
-dayb_weather = str(data2.iloc[15,4])
+daya_weather = str(data2.iloc[27,4])
+dayb_weather = str(data2.iloc[22,4])
+
+#NYC METRO HIGH TEMPS
+cell_value_bx = str(data2.iloc[31, 2])
+cell_value_jc = str(data2.iloc[19, 2])
+cell_value_nk = str(data2.iloc[28, 2])
+cell_value_si = str(data2.iloc[8, 2])
+cell_value_bk = str(data2.iloc[6, 2])
+cell_value_qn = str(data2.iloc[34, 2])
+cell_value_gc = str(data2.iloc[17, 2])
+cell_value_lb = str(data2.iloc[21, 2])
+cell_value_bs = str(data2.iloc[3, 2])
+
+#NYC METRO WEATHER
+weather_bx = str(data2.iloc[31, 4])
+weather_jc = str(data2.iloc[19, 4])
+weather_nk = str(data2.iloc[28, 4])
+weather_si = str(data2.iloc[8, 4])
+weather_bk = str(data2.iloc[6, 4])
+weather_qn = str(data2.iloc[34, 4])
+weather_gc = str(data2.iloc[17, 4])
+weather_lb = str(data2.iloc[21, 4])
+weather_bs = str(data2.iloc[3, 4])
+
+#NYC METRO RAIN TOTALS
+rain_bx = str(data2.iloc[31, 5])
+rain_jc = str(data2.iloc[19, 5])
+rain_nk = str(data2.iloc[28, 5])
+rain_si = str(data2.iloc[8, 5])
+rain_bk = str(data2.iloc[6, 5])
+rain_qn = str(data2.iloc[34, 5])
+rain_gc = str(data2.iloc[17, 5])
+rain_lb = str(data2.iloc[21, 5])
+rain_bs = str(data2.iloc[3, 5])
 
 #IMAGE MAPPING
 # Define the base directory for the image files
@@ -353,7 +390,296 @@ for slide in presentation.slides:
             shape.element.getparent().remove(shape.element)
             slide.shapes.add_picture(dayb_image_file, shape.left, shape.top, shape.width, shape.height)
 
+# SLIDE NUMBER 3 BEGINS HERE **************************
 
+
+slide = presentation.slides[slide_index3]
+
+
+bronx = 23  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox = slide.shapes[bronx].text_frame
+
+jerseycity = 11  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox2 = slide.shapes[jerseycity].text_frame
+
+newark = 25  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox3 = slide.shapes[newark].text_frame
+
+statenisland = 17  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox4 = slide.shapes[statenisland].text_frame
+
+brooklyn = 20  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox5 = slide.shapes[brooklyn].text_frame
+
+queens = 8  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox6 = slide.shapes[queens].text_frame
+
+gardencity = 24  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox7 = slide.shapes[gardencity].text_frame
+
+longbeach = 14  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox8 = slide.shapes[longbeach].text_frame
+
+bayshore = 36  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox9 = slide.shapes[bayshore].text_frame
+
+# In[253]:
+
+#CLEAR TEXT, ADD NEW VALUES
+textbox.clear()
+textbox.text = cell_value_bx
+textbox2.clear()
+textbox2.text = cell_value_jc
+textbox3.clear()
+textbox3.text = cell_value_nk
+textbox4.clear()
+textbox4.text = cell_value_si
+textbox5.clear()
+textbox5.text = cell_value_bk
+textbox6.clear()
+textbox6.text = cell_value_qn
+textbox7.clear()
+textbox7.text = cell_value_gc
+textbox8.clear()
+textbox8.text = cell_value_lb
+textbox9.clear()
+textbox9.text = cell_value_bs
+
+
+#FORMATTING NEW TEXT
+
+
+for paragraph in textbox.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox2.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox3.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox4.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox5.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+for paragraph in textbox6.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox7.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox8.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox9.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+# Assign image file paths based on weather values using the dictionary mapping
+bx_image_file = base_directory + weather_image_mapping.get(weather_bx, "Wind.png")
+jc_image_file = base_directory + weather_image_mapping.get(weather_jc, "Wind.png")
+nk_image_file = base_directory + weather_image_mapping.get(weather_nk, "Wind.png")
+si_image_file = base_directory + weather_image_mapping.get(weather_si, "Wind.png")
+bk_image_file = base_directory + weather_image_mapping.get(weather_bk, "Wind.png")
+qn_image_file = base_directory + weather_image_mapping.get(weather_qn, "Wind.png")
+gc_image_file = base_directory + weather_image_mapping.get(weather_gc, "Wind.png")
+lb_image_file = base_directory + weather_image_mapping.get(weather_lb, "Wind.png")
+bs_image_file = base_directory + weather_image_mapping.get(weather_bs, "Wind.png")
+
+
+# Iterate through the slides and replace images
+for slide in presentation.slides:
+    for shape in slide.shapes:
+        if shape.name == "bx_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(bx_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "jc_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(jc_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "nk_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(nk_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "si_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(si_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "bk_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(bk_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "qn_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(qn_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "gc_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(gc_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "lb_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(lb_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "bs_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(bs_image_file, shape.left, shape.top, shape.width, shape.height)
+
+
+
+# SLIDE NUMBER 4 BEGINS HERE
+
+
+slide = presentation.slides[slide_index4]
+
+
+bronx = 23  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox = slide.shapes[bronx].text_frame
+
+jerseycity = 22  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox2 = slide.shapes[jerseycity].text_frame
+
+newark = 21  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox3 = slide.shapes[newark].text_frame
+
+statenisland = 20  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox4 = slide.shapes[statenisland].text_frame
+
+brooklyn = 28  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox5 = slide.shapes[brooklyn].text_frame
+
+queens = 24  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox6 = slide.shapes[queens].text_frame
+
+gardencity = 27  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox7 = slide.shapes[gardencity].text_frame
+
+longbeach = 25  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox8 = slide.shapes[longbeach].text_frame
+
+bayshore = 26  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox9 = slide.shapes[bayshore].text_frame
+
+# In[253]:
+
+#CLEAR TEXT, ADD NEW VALUES
+textbox.clear()
+textbox.text = f'{rain_bx}"'
+textbox2.clear()
+textbox2.text = f'{rain_jc}"'
+textbox3.clear()
+textbox3.text = f'{rain_nk}"'
+textbox4.clear()
+textbox4.text = f'{rain_si}"'
+textbox5.clear()
+textbox5.text = f'{rain_bk}"'
+textbox6.clear()
+textbox6.text = f'{rain_qn}"'
+textbox7.clear()
+textbox7.text = f'{rain_gc}"'
+textbox8.clear()
+textbox8.text = f'{rain_lb}"'
+textbox9.clear()
+textbox9.text = f'{rain_bs}"'
+
+
+#FORMATTING NEW TEXT
+
+
+for paragraph in textbox.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox2.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox3.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox4.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox5.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+for paragraph in textbox6.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox7.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox8.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox9.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
 
 #THIS UPDATES THE PRESENTATION
 updated_powerpoint_file_path = "/Users/erick/Desktop/Wx Email Graphics.pptx"

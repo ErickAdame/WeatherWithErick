@@ -28,7 +28,11 @@ from pptx.enum.text import PP_ALIGN
 # Set the file paths
 powerpoint_file_path = "/Users/erick/Desktop/Graphics_Templates/template_elsewhere.pptx"
 csv_file_path = "/Users/erick/Desktop/city_high_and Lows.csv"
+csv_file_path2 = "/Users/erick/Desktop/grand rapids_7_day_forecast.csv"
 csv_file_path3 = "/Users/erick/Desktop/day_part_data.csv"
+csv_file_path4 = "/Users/erick/Desktop/fort lauderdale_7_day_forecast.csv"
+csv_file_path5 = "/Users/erick/Desktop/charlotte_7_day_forecast.csv"
+
 
 
 # Set the slide index and text box index of the PowerPoint slide to update
@@ -45,59 +49,62 @@ slide_index9 = 12
 
 #DATA SOURCE
 data = pd.read_csv(csv_file_path)
+data2 = pd.read_csv(csv_file_path2)
 data3 = pd.read_csv(csv_file_path3)
+data4 = pd.read_csv(csv_file_path4)
+data5 = pd.read_csv(csv_file_path5)
 
 
 #ASSIGN ALL CELL VALUES
 
 #HIGH TEMPS
-cell_value_min = str(data.iloc[18, 2]) 
-cell_value_des = str(data.iloc[11, 2])
-cell_value_chi = str(data.iloc[8, 2])
-cell_value_grr = str(data.iloc[13, 2])
-cell_value_det = str(data.iloc[12, 2])
-cell_value_cinn = str(data.iloc[21, 2])
-cell_value_clt = str(data.iloc[7, 2])
+cell_value_min = str(data.iloc[25, 2]) 
+cell_value_des = str(data.iloc[15, 2])
+cell_value_chi = str(data.iloc[11, 2])
+cell_value_grr = str(data2.iloc[0, 2])
+cell_value_det = str(data.iloc[16, 2])
+cell_value_cinn = str(data.iloc[12, 2])
+cell_value_clt = str(data5.iloc[0, 2])
 cell_value_atl = str(data.iloc[1, 2])
-cell_value_wil = str(data.iloc[5, 2])
-cell_value_char = str(data.iloc[7, 2])
-cell_value_sav = str(data.iloc[29, 2])
-cell_value_mem = str(data.iloc[16, 2])
-cell_value_dal = str(data.iloc[10, 2])
-cell_value_new = str(data.iloc[19, 2])
-cell_value_tam = str(data.iloc[31, 2])
-cell_value_mia = str(data.iloc[17, 2])
+cell_value_wil = str(data.iloc[42, 2])
+cell_value_char = str(data.iloc[9, 2])
+cell_value_sav = str(data.iloc[38, 2])
+cell_value_mem = str(data.iloc[23, 2])
+cell_value_dal = str(data.iloc[14, 2])
+cell_value_new = str(data.iloc[26, 2])
+cell_value_tam = str(data.iloc[40, 2])
+cell_value_mia = str(data.iloc[24, 2])
 
 #DAYPART TEMPS
 daypart1_value = str(data3.iloc[5, 1])
-daypart2_value = str(data3.iloc[5, 5])
+daypart2_value = str(data2.iloc[0, 2])
 daypart3_value = str(data3.iloc[5, 6])
 
 daypart4_value = str(data3.iloc[7, 1])
-daypart5_value = str(data3.iloc[7, 4])
+daypart5_value = str(data4.iloc[0, 2])
 daypart6_value = str(data3.iloc[7, 6])
 
 #WEATHER CONDITIONS
-cin_weather = str(data.iloc[21,4])
-des_weather = str(data.iloc[11,4])
-min_weather = str(data.iloc[18,4])
-chi_weather = str(data.iloc[8,4])
-grr_weather = str(data.iloc[13,4])
-det_weather = str(data.iloc[12,4])
-sav_weather = str(data.iloc[29,4])
-char_weather = str(data.iloc[7,4])
-wil_weather = str(data.iloc[5,4])
-clt_weather = str(data.iloc[7,4])
+cin_weather = str(data.iloc[12,4])
+des_weather = str(data.iloc[15,4])
+min_weather = str(data.iloc[25,4])
+chi_weather = str(data.iloc[11,4])
+grr_weather = str(data.iloc[18,4])
+det_weather = str(data.iloc[16,4])
+sav_weather = str(data.iloc[38,4])
+char_weather = str(data.iloc[9,4])
+wil_weather = str(data.iloc[42,4])
+clt_weather = str(data.iloc[10,4])
 atl_weather = str(data.iloc[1,4])
-tam_weather = str(data.iloc[31,4])
-mem_weather = str(data.iloc[16,4])
-dal_weather = str(data.iloc[10,4])
-new_weather = str(data.iloc[19,4])
-mia_weather = str(data.iloc[17,4])
+tam_weather = str(data.iloc[40,4])
+mem_weather = str(data.iloc[23,4])
+dal_weather = str(data.iloc[14,4])
+new_weather = str(data.iloc[26,4])
+mia_weather = str(data.iloc[24,4])
 
 #DAYPART WEATHER
 daypart1_weather = str(data3.iloc[4,1])
-daypart2_weather = str(data3.iloc[4,4])
+daypart2_weather = str(data2.iloc[4,4])
 daypart3_weather = str(data3.iloc[4,6])
 
 daypart4_weather = str(data3.iloc[6,1])

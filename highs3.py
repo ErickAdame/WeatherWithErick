@@ -84,3 +84,24 @@ for city in city_list:
     plt.xticks(size=30, color="white")
     plt.ylim([0, five_day["High Temp"].max() + 10])
     plt.savefig(f"{city}_7_Day_Forecast.png", transparent=True)
+
+
+
+#### THIS SECTION OF CODE ADJUSTS FIRST THREE DAYS OF 7 DAY FORECAST
+nyc_df = pd.read_csv ('/Users/erick/Desktop/new york_7_day_forecast.csv')
+
+url_nyc = 'https://api.tomorrow.io/v4/timelines?location=new%20york&fields=temperature&timesteps=1d&units=imperial&apikey=qkgtPEvKM6gmNzMkEx9Aplfe3ME7CfWT'
+forecast_nyc = requests.get(url_nyc).json()
+
+day_1R = round(forecast_nyc['data']['timelines'][0]['intervals'][1]['values']['temperature'])
+day_2R = round(forecast_nyc['data']['timelines'][0]['intervals'][2]['values']['temperature'])
+day_3R = round(forecast_nyc['data']['timelines'][0]['intervals'][3]['values']['temperature'])
+
+nyc_df.iloc[0,2] = day_1R
+nyc_df.iloc[1,2] = day_2R
+nyc_df.iloc[2,2] = day_3R
+nyc_df = nyc_df.drop('Unnamed: 0', axis=1)
+
+city = "new york"
+
+nyc_df.to_csv(f'{city}_7_day_forecast.csv')

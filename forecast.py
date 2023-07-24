@@ -677,38 +677,28 @@ df.to_csv('city_hourly_ELSE_forecast.csv')
 # In[12]:
 
 
-city_list = ["new york", "buffalo", "albany", "boston, us", "philadelphia, us", "columbus, us", "washington dc", "los angeles, us", "san diego", "miami", "dallas", "atlanta", "chicago", "las vegas", "phoenix", "sacramento", "grand rapids, us", "detroit", "des moines, us", "minneapolis", "cincinnati", "charlotte", "savannah", "tampa", "new orleans", "memphis, us", "carolina beach", "charleston", "bakersfield, us", "oceanside, us", "palm springs", "santa barbara", "syracuse, US", ]
-url = "http://api.openweathermap.org/data/2.5/forecast/daily"
-units = "imperial"
-cnt = '8'
-dt = datetime.now() #+ pd.Timedelta("1 day")
-start_time = dt.replace(hour=6, minute=0)
-end_time = start_time+ pd.Timedelta("18 hours")
+city_list = ["new york", "buffalo, NY", "albany, NY", "boston, MA", "philadelphia", "columbus, OH", "washington dc", "los angeles, CA", "san diego, CA", "miami, FL", "dallas, TX", "atlanta, GA", "chicago, IL", "las vegas, NV", "phoenix, AZ", "sacramento, CA", "grand rapids, MI", "detroit, MI", "des moines, IA", "minneapolis, MN", "cincinnati, OH", "charlotte, NC", "savannah, GA", "tampa, FL", "new orleans, LA", "memphis, TN", "wilmington, NC", "charleston, SC", "bakersfield, CA", "oceanside, CA", "palm springs, CA", "santa barbara, CA", "syracuse, NY", "newark, NJ", "jersey city, NJ" ,"garden city, NY", "long beach, ny", "bay shore, ny", "brooklyn, ny", "parkchester, ny", "bulls head, ny", "bayside, ny" ]
+url = "https://api.weatherbit.io/v2.0/forecast/daily"
+key = "85a65933d3894f0d9c7194ffa8098565"
+units = "&units=I"
 
 url_list = []
-c1_high_temp = []
-c1_low_temp= []
-c1_weather = []
-c1_pop = []
 
 for city in city_list:
     city=city
 
-    geo_url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + weather_api_key
-    lat_lon = requests.get(geo_url).json()
-    #print(geo_url)
-
-    lat = str(lat_lon[0]["lat"])
-    lon = str(lat_lon[0]["lon"])
-    final_url = url + "?lat=" + lat + "&lon=" + lon + "&cnt=" + cnt + "&units=" + units + "&appid=" + weather_api_key
+    final_url = final_url = f"{url}?city={city}{units}&key={key}"
     url_list.append(final_url)
-    
 
+url_zip = f"https://api.weatherbit.io/v2.0/forecast/daily?postal_code=11360&country=US{units}&key={key}"
+url_list.append(url_zip)
+    
 city_name = []
 high_temp = []
 low_temp= []
 weather = []
 pop = []
+daily_precip = []
 time_stamp = []
 ts = []
 high2 = []
@@ -718,44 +708,37 @@ weather3 = []
     
 for url in range(len(url_list)):
     forecast = requests.get(url_list[url]).json()
-    city_name.append(forecast['city']['name'])
-    high = forecast['list'][1]['temp']['max']
+    city_name.append(forecast['city_name'])
+    high = forecast['data'][1]['max_temp']
     high_temp.append(round(high))
-    low = forecast['list'][2]['temp']['min']
+    low = forecast['data'][1]['min_temp']
     low_temp.append(round(low))    
-    pop.append(forecast['list'][1]['pop'])
-    time_stamp.append(forecast['list'][1]['dt'])
-    weather.append(forecast['list'][1]['weather'][0]['description'])
-    high2.append(round(forecast['list'][2]['temp']['max']))
-    high3.append(round(forecast['list'][3]['temp']['max']))
-    weather2.append(forecast['list'][2]['weather'][0]['description'])
-    weather3.append(forecast['list'][3]['weather'][0]['description'])
-        
-for time in time_stamp:
-    ts.append(datetime.fromtimestamp(time))
+    pop.append(forecast['data'][1]['pop'])
+    daily_precip.append(forecast['data'][1]['precip'])
+    weather.append((forecast['data'][1]['weather']['description']).lower())
+    high2.append(round(forecast['data'][2]['max_temp']))
+    high3.append(round(forecast['data'][3]['max_temp']))
+    weather2.append((forecast['data'][2]['weather']['description']).lower())
+    weather3.append((forecast['data'][3]['weather']['description']).lower())
     
 df = pd.DataFrame({
     "City": city_name,
     "Today High": high_temp,
     "Tonight Low": low_temp,
     "Weather": weather,
+    "Daily Precip": daily_precip,
     "POP": pop,
     "Tomorrow High": high2,
     "Tomorrow Weather": weather2,
     "Next Next High": high3,
     "Next Next Weather": weather3
-    
 }
-
 )
 
 df = df.sort_values('City')
+df["Daily Precip"] = df["Daily Precip"].round(2)
 
 df.to_csv('city_high_and Lows.csv')
 
 
-# In[ ]:
-
-
-
-
+# %%

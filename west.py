@@ -46,27 +46,27 @@ data3 = pd.read_csv(csv_file_path3)
 #ASSIGN ALL CELL VALUES
 
 #HIGH TEMPS
-cell_value_sac = str(data.iloc[26, 2])  # Assuming the value is in cell C2 (row 1, column 2)
-cell_value_lax = str(data.iloc[15, 2])
-cell_value_las = str(data.iloc[14, 2]+2)
-cell_value_phx = str(data.iloc[25, 2]+2)
-cell_value_san = str(data.iloc[27, 2])
-cell_value_bak = str(data.iloc[2, 2]+2)
-cell_value_sba = str(data.iloc[28, 2])
-cell_value_ocn = str(data.iloc[22, 2])
-cell_value_plm = str(data.iloc[23, 2]+2)
+cell_value_sac = str(data.iloc[35, 2])  # Assuming the value is in cell C2 (row 1, column 2)
+cell_value_lax = str(data.iloc[22, 2])
+cell_value_las = str(data.iloc[20, 2])
+cell_value_phx = str(data.iloc[33, 2])
+cell_value_san = str(data.iloc[36, 2])
+cell_value_bak = str(data.iloc[2, 2])
+cell_value_sba = str(data.iloc[37, 2])
+cell_value_ocn = str(data.iloc[29, 2])
+cell_value_plm = str(data.iloc[30, 2])
 
 #WEATHER CONDITIONS
 #WEATHER CONDITIONS
-los_weather = str(data.iloc[15,4])
-san_weather = str(data.iloc[27,4])
-sac_weather = str(data.iloc[26,4])
-las_weather = str(data.iloc[14,4])
-phx_weather = str(data.iloc[25,4])
+los_weather = str(data.iloc[22,4])
+san_weather = str(data.iloc[36,4])
+sac_weather = str(data.iloc[35,4])
+las_weather = str(data.iloc[20,4])
+phx_weather = str(data.iloc[33,4])
 bak_weather = str(data.iloc[2,4])
-pal_weather = str(data.iloc[23,4])
-ocn_weather = str(data.iloc[22,4])
-sba_weather = str(data.iloc[28,4])
+pal_weather = str(data.iloc[30,4])
+ocn_weather = str(data.iloc[29,4])
+sba_weather = str(data.iloc[37,4])
 
 #DAYPART WEATHER CONDITIONS
 
@@ -288,7 +288,7 @@ csv_file_path2 = "/Users/erick/Desktop/los angeles_7_day_forecast.csv"
 data2 = pd.read_csv(csv_file_path2)
 
 #ASSIGN HIGH TEMP VALUES
-day1_high_value = str(data.iloc[15, 2])
+day1_high_value = str(data.iloc[22, 2])
 day2_high_value = str(data2.iloc[1, 2])
 day3_high_value = str(data2.iloc[2, 2])
 day4_high_value = str(data2.iloc[3, 2])
@@ -538,7 +538,7 @@ data3 = pd.read_csv(csv_file_path3)
 
 #ASSIGN HIGH TEMP VALUES
 daypart1_value = str(data3.iloc[3, 2])
-daypart2_value = str(data.iloc[15, 2])
+daypart2_value = str(data.iloc[22, 2])
 daypart3_value = str(data3.iloc[3, 6])
 
 #WEATHER CONDITIONS
@@ -619,7 +619,7 @@ data3 = pd.read_csv(csv_file_path3)
 
 #ASSIGN HIGH TEMP VALUES
 daypart4_value = str(data3.iloc[9, 2])
-daypart5_value = str(data.iloc[27, 2])
+daypart5_value = str(data.iloc[36, 2])
 daypart6_value = str(data3.iloc[9, 6])
 
 #WEATHER CONDITIONS
