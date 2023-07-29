@@ -2,7 +2,7 @@ import subprocess
 import time
 
 # List of scripts to execute in order
-scripts = ["forecast.py", "highs3.py", "day_part.py", "northeast.py", "else.py", "west.py", "wxgraphics.py"]
+scripts = ["forecast.py", "highs3.py", "day_part.py", "northeast.py", "else.py", "west.py", "wxgraphics.py", "rain.py"]
 
 # Loop through the scripts
 for script in scripts:

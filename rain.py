@@ -30,7 +30,7 @@ lat = "40.7826"
 #https://api.openweathermap.org/data/2.5/forecast/daily?lat=40.7826&lon=-73.9656&cnt=7&units=imperial&appid=155db15cf89682a55503d94f25dc4deb
 
 final_url = url + "?lat=" + lat + "&lon=" + lon + "&units=" + units + "&appid=" + weather_api_key
-print(final_url)
+
 
 
 # In[5]:

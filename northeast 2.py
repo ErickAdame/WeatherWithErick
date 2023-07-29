@@ -29,7 +29,7 @@ powerpoint_file_path = "/Users/erick/Desktop/Graphics_Templates/northeast_templa
 csv_file_path = "/Users/erick/Desktop/city_high_and Lows.csv"
 
 csv_file_path2 = "/Users/erick/Desktop/new york_7_day_forecast.csv"
-
+data2 = pd.read_csv(csv_file_path2)
 
 # Set the slide index and text box index of the PowerPoint slide to update
  # REMINDER: Slide index is 0-based, so slide 7 corresponds to index 6
@@ -38,11 +38,9 @@ slide_index2= 8
 slide_index3= 17
 slide_index4 = 3
 slide_index5 = 9
-slide_index6 = 18
 
 #DATA SOURCE
 data = pd.read_csv(csv_file_path)
-data2 = pd.read_csv(csv_file_path2)
 
 
 
@@ -67,16 +65,6 @@ cell_value_nyc_low = str(data.iloc[27, 3])
 cell_value_phl_low = str(data.iloc[32, 3])
 cell_value_col_low = str(data.iloc[13, 3])
 cell_value_was_low = str(data.iloc[41, 3])
-
-#APPARENT TEMPS
-app_value_alb = str(data.iloc[0, 7])  # Assuming the value is in cell C2 (row 1, column 2)
-app_value_buf = str(data.iloc[7, 7])
-app_value_syr = str(data.iloc[39, 7])
-app_value_bos = str(data.iloc[4, 7])
-app_value_nyc = str(data.iloc[27, 7])
-app_value_phl = str(data.iloc[32, 7])
-app_value_col = str(data.iloc[13, 7])
-app_value_was = str(data.iloc[41, 7])
 
 #WEATHER CONDITIONS
 alb_weather = str(data.iloc[0,4])
@@ -829,182 +817,9 @@ for paragraph in textbox8.paragraphs:
 
 
 
-# SLIDE NUMBER 18 BEGINS HERE **************************
 
 
-slide = presentation.slides[slide_index6]
 
-
-albany2 = 24  # Textbox index is 0-based, so textbox 9 corresponds to index 8
-textbox = slide.shapes[albany2].text_frame
-
-buffalo2 = 11  # Textbox index is 0-based, so textbox 9 corresponds to index 8
-textbox2 = slide.shapes[buffalo2].text_frame
-
-syracuse2 = 23  # Textbox index is 0-based, so textbox 9 corresponds to index 8
-textbox3 = slide.shapes[syracuse2].text_frame
-
-boston2 = 25  # Textbox index is 0-based, so textbox 9 corresponds to index 8
-textbox4 = slide.shapes[boston2].text_frame
-
-newyork2 = 8  # Textbox index is 0-based, so textbox 9 corresponds to index 8
-textbox5 = slide.shapes[newyork2].text_frame
-
-philadelphia2 = 20  # Textbox index is 0-based, so textbox 9 corresponds to index 8
-textbox6 = slide.shapes[philadelphia2].text_frame
-
-columbus2 = 14  # Textbox index is 0-based, so textbox 9 corresponds to index 8
-textbox7 = slide.shapes[columbus2].text_frame
-
-washington2 = 17  # Textbox index is 0-based, so textbox 9 corresponds to index 8
-textbox8 = slide.shapes[washington2].text_frame
-
-
-# In[253]:
-
-#CLEAR TEXT, ADD NEW VALUES
-textbox.clear()
-textbox.text = app_value_alb
-textbox2.clear()
-textbox2.text = app_value_buf
-textbox3.clear()
-textbox3.text = app_value_syr
-textbox4.clear()
-textbox4.text = app_value_bos
-textbox5.clear()
-textbox5.text = app_value_nyc
-textbox6.clear()
-textbox6.text = app_value_phl
-textbox7.clear()
-textbox7.text = app_value_col
-textbox8.clear()
-textbox8.text = app_value_was
-
-#FORMATTING NEW TEXT
-
-
-for paragraph in textbox.paragraphs:
-    for run in paragraph.runs:
-        run.font.size = Pt(48)  # Set font size to 48 points
-        run.font.color.rgb = RGBColor(139, 0, 0)
-        run.font.bold = True 
-    paragraph.alignment = PP_ALIGN.CENTER
-
-for paragraph in textbox2.paragraphs:
-    for run in paragraph.runs:
-        run.font.size = Pt(48)  # Set font size to 48 points
-        run.font.color.rgb = RGBColor(139, 0, 0)
-        run.font.bold = True 
-    paragraph.alignment = PP_ALIGN.CENTER
-
-for paragraph in textbox3.paragraphs:
-    for run in paragraph.runs:
-        run.font.size = Pt(48)  # Set font size to 48 points
-        run.font.color.rgb = RGBColor(139, 0, 0)
-        run.font.bold = True 
-    paragraph.alignment = PP_ALIGN.CENTER
-
-for paragraph in textbox4.paragraphs:
-    for run in paragraph.runs:
-        run.font.size = Pt(48)  # Set font size to 48 points
-        run.font.color.rgb = RGBColor(139, 0, 0)
-        run.font.bold = True 
-    paragraph.alignment = PP_ALIGN.CENTER
-
-for paragraph in textbox5.paragraphs:
-    for run in paragraph.runs:
-        run.font.size = Pt(48)  # Set font size to 48 points
-        run.font.color.rgb = RGBColor(139, 0, 0)
-        run.font.bold = True 
-    paragraph.alignment = PP_ALIGN.CENTER
-
-
-for paragraph in textbox6.paragraphs:
-    for run in paragraph.runs:
-        run.font.size = Pt(48)  # Set font size to 48 points
-        run.font.color.rgb = RGBColor(139, 0, 0)
-        run.font.bold = True 
-    paragraph.alignment = PP_ALIGN.CENTER
-
-for paragraph in textbox7.paragraphs:
-    for run in paragraph.runs:
-        run.font.size = Pt(48)  # Set font size to 48 points
-        run.font.color.rgb = RGBColor(139, 0, 0)
-        run.font.bold = True 
-    paragraph.alignment = PP_ALIGN.CENTER
-
-for paragraph in textbox8.paragraphs:
-    for run in paragraph.runs:
-        run.font.size = Pt(48)  # Set font size to 48 points
-        run.font.color.rgb = RGBColor(139, 0, 0)
-        run.font.bold = True 
-    paragraph.alignment = PP_ALIGN.CENTER
-
-#IMAGE CODING HERE
-
-
-# Define the base directory for the image files
-base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
-
-# Define the dictionary mapping weather values to image file paths
-weather_image_mapping = {
-    "sky is clear": "Sun 3.png",
-    "moderate rain": "Rain.png",
-    "light rain": "Rain + Sun.png",
-    "overcast clouds": "Cloud.png",
-    "scattered clouds": "Sun & Clouds.png",
-    "broken clouds": "Sun & Clouds.png",
-    "few clouds": "Sun 3.png",
-    "heavy intensity rain": "Thunderstorm & Sun.png",
-    "clear sky": "Sun 3.png",
-    "partly cloudy": "Sun & Clouds.png",
-    "sunny": "Sun 3.png",
-    "patchy rain possible": "Rain + Sun.png",
-    "heavy rain": "Thunderstorm & Sun.png",
-    "thunderstorm with rain": "Thunderstorm & Sun.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
-
-    # Add more mappings for other weather conditions
-}
-
-# Assign image file paths based on weather values using the dictionary mapping
-nyc_image_file = base_directory + weather_image_mapping.get(nyc_weather, "Wind.png")
-alb_image_file = base_directory + weather_image_mapping.get(alb_weather, "Wind.png")
-bos_image_file = base_directory + weather_image_mapping.get(bos_weather, "Wind.png")
-buf_image_file = base_directory + weather_image_mapping.get(buf_weather, "Wind.png")
-syr_image_file = base_directory + weather_image_mapping.get(syr_weather, "Wind.png")
-phl_image_file = base_directory + weather_image_mapping.get(phl_weather, "Wind.png")
-was_image_file = base_directory + weather_image_mapping.get(was_weather, "Wind.png")
-col_image_file = base_directory + weather_image_mapping.get(col_weather, "Wind.png")
-
-
-# Iterate through the slides and replace images
-for slide in presentation.slides:
-    for shape in slide.shapes:
-        if shape.name == "nyc_icon":
-            shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(nyc_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "alb_icon":
-            shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(alb_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "bos_icon":
-            shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(bos_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "buf_icon":
-            shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(buf_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "syr_icon":
-            shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(syr_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "phl_icon":
-            shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(phl_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "was_icon":
-            shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(was_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "col_icon":
-            shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(col_image_file, shape.left, shape.top, shape.width, shape.height)
 
 #THIS UPDATES THE PRESENTATION
 updated_powerpoint_file_path = "/Users/erick/Desktop/Weather_Update.pptx"

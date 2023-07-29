@@ -705,6 +705,7 @@ high2 = []
 high3 = []
 weather2 = []
 weather3 = []
+apparent_T = []
     
 for url in range(len(url_list)):
     forecast = requests.get(url_list[url]).json()
@@ -720,6 +721,7 @@ for url in range(len(url_list)):
     high3.append(round(forecast['data'][3]['max_temp']))
     weather2.append((forecast['data'][2]['weather']['description']).lower())
     weather3.append((forecast['data'][3]['weather']['description']).lower())
+    apparent_T.append(round(forecast['data'][1]['app_max_temp']))
     
 df = pd.DataFrame({
     "City": city_name,
@@ -728,6 +730,7 @@ df = pd.DataFrame({
     "Weather": weather,
     "Daily Precip": daily_precip,
     "POP": pop,
+    "Apparent T": apparent_T,
     "Tomorrow High": high2,
     "Tomorrow Weather": weather2,
     "Next Next High": high3,

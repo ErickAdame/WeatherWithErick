@@ -36,6 +36,7 @@ slide_index = 0
 slide_index2 = 1
 slide_index3 = 2
 slide_index4 = 3
+slide_index5 = 4
 
 #READ THE DATA
 data = pd.read_csv(csv_file_path)
@@ -112,6 +113,17 @@ rain_qn = str(data2.iloc[34, 5])
 rain_gc = str(data2.iloc[17, 5])
 rain_lb = str(data2.iloc[21, 5])
 rain_bs = str(data2.iloc[3, 5])
+
+#NYC METRO HEAT INDEX
+app_value_bx = str(data2.iloc[31, 7])
+app_value_jc = str(data2.iloc[19, 7])
+app_value_nk = str(data2.iloc[28, 7])
+app_value_si = str(data2.iloc[8, 7])
+app_value_bk = str(data2.iloc[6, 7])
+app_value_qn = str(data2.iloc[34, 7])
+app_value_gc = str(data2.iloc[17, 7])
+app_value_lb = str(data2.iloc[21, 7])
+app_value_bs = str(data2.iloc[3, 7])
 
 #IMAGE MAPPING
 # Define the base directory for the image files
@@ -678,6 +690,128 @@ for paragraph in textbox9.paragraphs:
     for run in paragraph.runs:
         run.font.size = Pt(48)  # Set font size to 48 points
         run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+
+slide = presentation.slides[slide_index5]
+
+
+bronx = 23  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox = slide.shapes[bronx].text_frame
+
+jerseycity = 11  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox2 = slide.shapes[jerseycity].text_frame
+
+newark = 25  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox3 = slide.shapes[newark].text_frame
+
+statenisland = 17  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox4 = slide.shapes[statenisland].text_frame
+
+brooklyn = 20  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox5 = slide.shapes[brooklyn].text_frame
+
+queens = 8  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox6 = slide.shapes[queens].text_frame
+
+gardencity = 24  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox7 = slide.shapes[gardencity].text_frame
+
+longbeach = 14  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox8 = slide.shapes[longbeach].text_frame
+
+bayshore = 28  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox9 = slide.shapes[bayshore].text_frame
+
+# In[253]:
+
+#CLEAR TEXT, ADD NEW VALUES
+textbox.clear()
+textbox.text = app_value_bx
+textbox2.clear()
+textbox2.text = app_value_jc
+textbox3.clear()
+textbox3.text = app_value_nk
+textbox4.clear()
+textbox4.text = app_value_si
+textbox5.clear()
+textbox5.text = app_value_bk
+textbox6.clear()
+textbox6.text = app_value_qn
+textbox7.clear()
+textbox7.text = app_value_gc
+textbox8.clear()
+textbox8.text = app_value_lb
+textbox9.clear()
+textbox9.text = app_value_bs
+
+
+#FORMATTING NEW TEXT
+
+
+for paragraph in textbox.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox2.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox3.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox4.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox5.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+for paragraph in textbox6.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox7.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox8.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox9.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(139, 0, 0)
         run.font.bold = True 
     paragraph.alignment = PP_ALIGN.CENTER
 
