@@ -537,14 +537,14 @@ data3 = pd.read_csv(csv_file_path3)
 
 
 #ASSIGN HIGH TEMP VALUES
-daypart1_value = str(data3.iloc[3, 2])
+daypart1_value = str(data3.iloc[3, 1])
 daypart2_value = str(data.iloc[22, 2])
-daypart3_value = str(data3.iloc[3, 6])
+daypart3_value = str(data3.iloc[3, 5])
 
 #WEATHER CONDITIONS
 daypart1_weather = str(data3.iloc[2,2])
 daypart2_weather = str(data3.iloc[2,5])
-daypart3_weather = str(data3.iloc[2,7])
+daypart3_weather = str(data3.iloc[2,6])
 
 #SELECT TEXT BOXES
 daypart1_temp = 11
@@ -587,12 +587,30 @@ for paragraph in textbox103.paragraphs:
 # Define the base directory for the image files
 base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
 
+base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night/"
 
+weather_image_mapping2 = {
+    "sky is clear": "Moon + Stars.png",
+    "moderate rain": "Rain.png",
+    "light rain": "Rain.png",
+    "overcast clouds": "Cloud.png",
+    "scattered clouds": "Night + Clouds.png",
+    "broken clouds": "Night + Clouds.png",
+    "few clouds": "Moon + Stars.png",
+    "heavy intensity rain": "Thunderstorm 2.png",
+    "clear sky": "Moon + Stars.png",
+    "partly cloudy": "Night + Clouds.png",
+    "sunny": "Moon + Stars.png",
+    "patchy rain possible": "Rain.png",
+    "heavy rain": "Thunderstorm 2.png",
+    "thunderstorm with rain": "Thunderstorm 2.png",
+    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+}
 
 # Assign image file paths based on weather values using the dictionary mapping
 daypart1_image_file = base_directory + weather_image_mapping.get(daypart1_weather, "Wind.png")
 daypart2_image_file = base_directory + weather_image_mapping.get(daypart2_weather, "Wind.png")
-daypart3_image_file = base_directory + weather_image_mapping.get(daypart3_weather, "Wind.png")
+daypart3_image_file = base_directory2 + weather_image_mapping2.get(daypart3_weather, "Wind.png")
 
 
 
@@ -618,14 +636,14 @@ data3 = pd.read_csv(csv_file_path3)
 
 
 #ASSIGN HIGH TEMP VALUES
-daypart4_value = str(data3.iloc[9, 2])
+daypart4_value = str(data3.iloc[9, 1])
 daypart5_value = str(data.iloc[36, 2])
-daypart6_value = str(data3.iloc[9, 6])
+daypart6_value = str(data3.iloc[9, 5])
 
 #WEATHER CONDITIONS
 daypart4_weather = str(data3.iloc[7,2])
 daypart5_weather = str(data3.iloc[7,5])
-daypart6_weather = str(data3.iloc[7,7])
+daypart6_weather = str(data3.iloc[7,6])
 
 #SELECT TEXT BOXES
 daypart4_temp = 11
@@ -673,7 +691,7 @@ base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/wea
 # Assign image file paths based on weather values using the dictionary mapping
 daypart4_image_file = base_directory + weather_image_mapping.get(daypart1_weather, "Wind.png")
 daypart5_image_file = base_directory + weather_image_mapping.get(daypart2_weather, "Wind.png")
-daypart6_image_file = base_directory + weather_image_mapping.get(daypart3_weather, "Wind.png")
+daypart6_image_file = base_directory2 + weather_image_mapping2.get(daypart3_weather, "Wind.png")
 
 
 

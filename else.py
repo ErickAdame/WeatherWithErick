@@ -116,7 +116,25 @@ daypart6_weather = str(data3.iloc[6,6])
 #IMAGE MAPPING
 # Define the base directory for the image files
 base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
+base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night/"
 
+weather_image_mapping2 = {
+    "sky is clear": "Moon + Stars.png",
+    "moderate rain": "Rain.png",
+    "light rain": "Rain.png",
+    "overcast clouds": "Cloud.png",
+    "scattered clouds": "Night + Clouds.png",
+    "broken clouds": "Night + Clouds.png",
+    "few clouds": "Moon + Stars.png",
+    "heavy intensity rain": "Thunderstorm 2.png",
+    "clear sky": "Moon + Stars.png",
+    "partly cloudy": "Night + Clouds.png",
+    "sunny": "Moon + Stars.png",
+    "patchy rain possible": "Rain.png",
+    "heavy rain": "Thunderstorm 2.png",
+    "thunderstorm with rain": "Thunderstorm 2.png",
+    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+}
 
 # Define the dictionary mapping weather values to image file paths
 weather_image_mapping = {
@@ -534,7 +552,7 @@ base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/wea
 # Assign image file paths based on weather values using the dictionary mapping
 daypart1_image_file = base_directory + weather_image_mapping.get(daypart1_weather, "Wind.png")
 daypart2_image_file = base_directory + weather_image_mapping.get(daypart2_weather, "Wind.png")
-daypart3_image_file = base_directory + weather_image_mapping.get(daypart3_weather, "Wind.png")
+daypart3_image_file = base_directory2 + weather_image_mapping2.get(daypart3_weather, "Wind.png")
 
 
 
@@ -598,25 +616,43 @@ for paragraph in textbox106.paragraphs:
 # Define the base directory for the image files
 base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
 
+base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night/"
 
+weather_image_mapping2 = {
+    "sky is clear": "Moon + Stars.png",
+    "moderate rain": "Rain.png",
+    "light rain": "Rain.png",
+    "overcast clouds": "Cloud.png",
+    "scattered clouds": "Night + Clouds.png",
+    "broken clouds": "Night + Clouds.png",
+    "few clouds": "Moon + Stars.png",
+    "heavy intensity rain": "Thunderstorm 2.png",
+    "clear sky": "Moon + Stars.png",
+    "partly cloudy": "Night + Clouds.png",
+    "sunny": "Moon + Stars.png",
+    "patchy rain possible": "Rain.png",
+    "heavy rain": "Thunderstorm 2.png",
+    "thunderstorm with rain": "Thunderstorm 2.png",
+    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+}
 
 # Assign image file paths based on weather values using the dictionary mapping
 daypart1_image_file = base_directory + weather_image_mapping.get(daypart1_weather, "Wind.png")
 daypart2_image_file = base_directory + weather_image_mapping.get(daypart2_weather, "Wind.png")
-daypart3_image_file = base_directory + weather_image_mapping.get(daypart3_weather, "Wind.png")
+daypart3_image_file = base_directory2 + weather_image_mapping2.get(daypart3_weather, "Wind.png")
 
 
 
 # Iterate through the slides and replace images
 for slide in presentation.slides:
     for shape in slide.shapes:
-        if shape.name == "daypart4_icon":
+        if shape.name == "daypart1b":
             shape.element.getparent().remove(shape.element)
             slide.shapes.add_picture(daypart1_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "daypart5_icon":
+        elif shape.name == "daypart2b_icon":
             shape.element.getparent().remove(shape.element)
             slide.shapes.add_picture(daypart2_image_file, shape.left, shape.top, shape.width, shape.height)
-        elif shape.name == "daypart6_icon":
+        elif shape.name == "daypart3b_icon":
             shape.element.getparent().remove(shape.element)
             slide.shapes.add_picture(daypart3_image_file, shape.left, shape.top, shape.width, shape.height)
 

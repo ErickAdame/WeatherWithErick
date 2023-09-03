@@ -39,6 +39,7 @@ slide_index3= 17
 slide_index4 = 3
 slide_index5 = 9
 slide_index6 = 18
+slide_index7 = 16
 
 #DATA SOURCE
 data = pd.read_csv(csv_file_path)
@@ -98,6 +99,36 @@ rain_value_phl = str(data.iloc[32, 5])
 rain_value_col = str(data.iloc[13, 5])
 rain_value_was = str(data.iloc[41, 5])
 
+#WEEKEND DATA
+alb_sat = str(data.iloc[0,9])
+alb_sun = str(data.iloc[0,11])
+bos_sat = str(data.iloc[4,9])
+bos_sun = str(data.iloc[4,11])
+buf_sat = str(data.iloc[7,9])
+buf_sun = str(data.iloc[7,11])
+col_sat = str(data.iloc[13,9])
+col_sun = str(data.iloc[13,11])
+was_sat = str(data.iloc[41,9]) 
+was_sun = str(data.iloc[41,11])
+phl_sat = str(data.iloc[32,9])
+phl_sun = str(data.iloc[32,11])
+nyc_sat = str(data.iloc[27,9])
+nyc_sun = str(data.iloc[27,11])
+
+alb_sat_temp = str(data.iloc[0,8])
+alb_sun_temp = str(data.iloc[0,10])
+bos_sat_temp = str(data.iloc[4,8])
+bos_sun_temp = str(data.iloc[4,10])
+buf_sat_temp = str(data.iloc[7,8])
+buf_sun_temp = str(data.iloc[7,10])
+col_sat_temp = str(data.iloc[13,8])
+col_sun_temp = str(data.iloc[13,10])
+was_sat_temp = str(data.iloc[41,8]) 
+was_sun_temp = str(data.iloc[41,10])
+phl_sat_temp = str(data.iloc[32,8])
+phl_sun_temp = str(data.iloc[32,10])
+nyc_sat_temp = str(data.iloc[27,8])
+nyc_sun_temp = str(data.iloc[27,10])
 
 
 presentation = Presentation(powerpoint_file_path)
@@ -645,12 +676,12 @@ data3 = pd.read_csv(csv_file_path3)
 #ASSIGN HIGH TEMP VALUES
 daypart1_value = str(data3.iloc[1, 1])
 daypart2_value = str(data2.iloc[0, 2])
-daypart3_value = str(data3.iloc[1, 5])
+daypart3_value = str(data3.iloc[1, 6])
 
 #WEATHER CONDITIONS
 daypart1_weather = str(data3.iloc[0,1])
 daypart2_weather = str(data3.iloc[0,3])
-daypart3_weather = str(data3.iloc[0,5])
+daypart3_weather = str(data3.iloc[0,6])
 
 #SELECT TEXT BOXES
 daypart1_temp = 12
@@ -692,13 +723,32 @@ for paragraph in textbox103.paragraphs:
 
 # Define the base directory for the image files
 base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
+base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night"
 
+weather_image_mapping2 = {
+    "sky is clear": "Moon + Stars.png",
+    "moderate rain": "Rain.png",
+    "light rain": "Rain.png",
+    "overcast clouds": "Cloud.png",
+    "scattered clouds": "Night + Clouds.png",
+    "broken clouds": "Night + Clouds.png",
+    "few clouds": "Moon + Stars.png",
+    "heavy intensity rain": "Thunderstorm 2.png",
+    "clear sky": "Moon + Stars.png",
+    "partly cloudy": "Night + Clouds.png",
+    "sunny": "Moon + Stars.png",
+    "patchy rain possible": "Rain.png",
+    "heavy rain": "Thunderstorm 2.png",
+    "thunderstorm with rain": "Thunderstorm 2.png",
+    "thunderstorm with heavy rain": "Thunderstorm 2.png"
 
+    # Add more mappings for other weather conditions
+}
 
 # Assign image file paths based on weather values using the dictionary mapping
 daypart1_image_file = base_directory + weather_image_mapping.get(daypart1_weather, "Wind.png")
 daypart2_image_file = base_directory + weather_image_mapping.get(daypart2_weather, "Wind.png")
-daypart3_image_file = base_directory + weather_image_mapping.get(daypart3_weather, "Wind.png")
+daypart3_image_file = base_directory2 + weather_image_mapping2.get(daypart3_weather, "Wind.png")
 
 
 
@@ -1005,6 +1055,244 @@ for slide in presentation.slides:
         elif shape.name == "col_icon":
             shape.element.getparent().remove(shape.element)
             slide.shapes.add_picture(col_image_file, shape.left, shape.top, shape.width, shape.height)
+
+
+#WEEKEND WEATHER SLIDE 17 STARTS HERE
+slide = presentation.slides[slide_index7]
+
+albany_sat = 9  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox = slide.shapes[albany_sat].text_frame
+albany_sun = 10  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox2 = slide.shapes[albany_sun].text_frame
+
+buffalo_sat = 45  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox3 = slide.shapes[buffalo_sat].text_frame
+buffalo_sat = 46  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox4 = slide.shapes[buffalo_sat].text_frame
+
+boston_sat = 18  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox5 = slide.shapes[boston_sat].text_frame
+boston_sun = 19  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox6 = slide.shapes[boston_sun].text_frame
+
+newyork_sat = 27  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox7 = slide.shapes[newyork_sat].text_frame
+newyork_sun = 28  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox8 = slide.shapes[newyork_sun].text_frame
+
+philadelphia_sat = 36  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox9 = slide.shapes[philadelphia_sat].text_frame
+philadelphia_sun = 37  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox10 = slide.shapes[philadelphia_sun].text_frame
+
+columbus_sat = 54  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox11 = slide.shapes[columbus_sat].text_frame
+columbus_sun = 55  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox12 = slide.shapes[columbus_sun].text_frame
+
+washington_sat = 63  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox13 = slide.shapes[washington_sat].text_frame
+washington_sun = 64  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox14 = slide.shapes[washington_sun].text_frame
+
+textbox.clear()
+textbox.text = alb_sat_temp
+textbox2.clear()
+textbox2.text = alb_sun_temp
+textbox3.clear()
+textbox3.text = buf_sat_temp
+textbox4.clear()
+textbox4.text = buf_sun_temp
+textbox5.clear()
+textbox5.text = bos_sat_temp
+textbox6.clear()
+textbox6.text = bos_sun_temp
+textbox7.clear()
+textbox7.text = nyc_sat_temp
+textbox8.clear()
+textbox8.text = nyc_sun_temp
+textbox9.clear()
+textbox9.text = phl_sat_temp
+textbox10.clear()
+textbox10.text = phl_sun_temp
+textbox11.clear()
+textbox11.text = col_sat_temp
+textbox12.clear()
+textbox12.text = col_sun_temp
+textbox13.clear()
+textbox13.text = was_sat_temp
+textbox14.clear()
+textbox14.text = was_sun_temp
+
+for paragraph in textbox.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox2.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox3.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox4.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox5.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox6.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox7.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox8.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox9.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox10.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox11.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox12.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox13.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+for paragraph in textbox14.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(22)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(255, 255, 255)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+# Assign image file paths based on weather values using the dictionary mapping
+nyc_image_file = base_directory + weather_image_mapping.get(nyc_weather, "Wind.png")
+alb_image_file = base_directory + weather_image_mapping.get(alb_weather, "Wind.png")
+bos_image_file = base_directory + weather_image_mapping.get(bos_weather, "Wind.png")
+buf_image_file = base_directory + weather_image_mapping.get(buf_weather, "Wind.png")
+syr_image_file = base_directory + weather_image_mapping.get(syr_weather, "Wind.png")
+phl_image_file = base_directory + weather_image_mapping.get(phl_weather, "Wind.png")
+was_image_file = base_directory + weather_image_mapping.get(was_weather, "Wind.png")
+col_image_file = base_directory + weather_image_mapping.get(col_weather, "Wind.png")
+
+
+# Assign image file paths based on weather values using the dictionary mapping
+nyc_sat = base_directory + weather_image_mapping.get(nyc_sat, "Wind.png")
+alb_sat = base_directory + weather_image_mapping.get(alb_sat, "Wind.png")
+bos_sat = base_directory + weather_image_mapping.get(bos_sat, "Wind.png")
+buf_sat = base_directory + weather_image_mapping.get(buf_sat, "Wind.png")
+phl_sat = base_directory + weather_image_mapping.get(phl_sat, "Wind.png")
+was_sat = base_directory + weather_image_mapping.get(was_sat, "Wind.png")
+col_sat = base_directory + weather_image_mapping.get(col_sat, "Wind.png")
+nyc_sun = base_directory + weather_image_mapping.get(nyc_sun, "Wind.png")
+alb_sun = base_directory + weather_image_mapping.get(alb_sun, "Wind.png")
+bos_sun = base_directory + weather_image_mapping.get(bos_sun, "Wind.png")
+buf_sun = base_directory + weather_image_mapping.get(buf_sun, "Wind.png")
+phl_sun = base_directory + weather_image_mapping.get(phl_sun, "Wind.png")
+was_sun = base_directory + weather_image_mapping.get(was_sun, "Wind.png")
+col_sun = base_directory + weather_image_mapping.get(col_sun, "Wind.png")
+
+
+for slide in presentation.slides:
+    for shape in slide.shapes:
+        if shape.name == "washington_sat":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(was_sat, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "albany_sat":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(alb_sat, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "boston_sat":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(bos_sat, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "buffalo_sat":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(buf_sat, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "philadelphia_sat":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(phl_sat, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "washington_sat":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(was_sat, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "columbus_sat":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(col_sat, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "albany_sun":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(alb_sun, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "boston_sun":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(bos_sun, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "buffalo_sun":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(buf_sun, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "philadelphia_sun":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(phl_sun, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "washington_sun":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(was_sun, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "columbus_sun":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(col_sun, shape.left, shape.top, shape.width, shape.height)
 
 #THIS UPDATES THE PRESENTATION
 updated_powerpoint_file_path = "/Users/erick/Desktop/Weather_Update.pptx"

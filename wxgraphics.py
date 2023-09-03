@@ -72,11 +72,11 @@ daypart3_weather = str(data.iloc[0,3])
 daypart4_weather = str(data.iloc[0,4])
 daypart5_weather = str(data.iloc[0,5])
 
-daypart6_weather = str(data.iloc[2,2])
-daypart7_weather = str(data.iloc[2,3])
-daypart8_weather = str(data.iloc[2,4])
-daypart9_weather = str(data.iloc[2,5])
-daypart10_weather = str(data.iloc[2,6])
+daypart6_weather = str(data.iloc[2,1])
+daypart7_weather = str(data.iloc[2,2])
+daypart8_weather = str(data.iloc[2,3])
+daypart9_weather = str(data.iloc[2,4])
+daypart10_weather = str(data.iloc[2,5])
 
 daya_weather = str(data2.iloc[27,4])
 dayb_weather = str(data2.iloc[22,4])
@@ -128,6 +128,25 @@ app_value_bs = str(data2.iloc[3, 7])
 #IMAGE MAPPING
 # Define the base directory for the image files
 base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
+base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night/"
+
+weather_image_mapping2 = {
+    "sky is clear": "Moon + Stars.png",
+    "moderate rain": "Rain.png",
+    "light rain": "Rain.png",
+    "overcast clouds": "Cloud.png",
+    "scattered clouds": "Night + Clouds.png",
+    "broken clouds": "Night + Clouds.png",
+    "few clouds": "Moon + Stars.png",
+    "heavy intensity rain": "Thunderstorm 2.png",
+    "clear sky": "Moon + Stars.png",
+    "partly cloudy": "Night + Clouds.png",
+    "sunny": "Moon + Stars.png",
+    "patchy rain possible": "Rain.png",
+    "heavy rain": "Thunderstorm 2.png",
+    "thunderstorm with rain": "Thunderstorm 2.png",
+    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+}
 
 # Define the dictionary mapping weather values to image file paths
 weather_image_mapping = {
@@ -154,12 +173,12 @@ daypart1_image_file = base_directory + weather_image_mapping.get(daypart1_weathe
 daypart2_image_file = base_directory + weather_image_mapping.get(daypart2_weather, "Wind.png")
 daypart3_image_file = base_directory + weather_image_mapping.get(daypart3_weather, "Wind.png")
 daypart4_image_file = base_directory + weather_image_mapping.get(daypart4_weather, "Wind.png")
-daypart5_image_file = base_directory + weather_image_mapping.get(daypart5_weather, "Wind.png")
+daypart5_image_file = base_directory2 + weather_image_mapping2.get(daypart5_weather, "Wind.png")
 daypart6_image_file = base_directory + weather_image_mapping.get(daypart6_weather, "Wind.png")
 daypart7_image_file = base_directory + weather_image_mapping.get(daypart7_weather, "Wind.png")
 daypart8_image_file = base_directory + weather_image_mapping.get(daypart8_weather, "Wind.png")
 daypart9_image_file = base_directory + weather_image_mapping.get(daypart9_weather, "Wind.png")
-daypart10_image_file = base_directory + weather_image_mapping.get(daypart10_weather, "Wind.png")
+daypart10_image_file = base_directory2 + weather_image_mapping2.get(daypart10_weather, "Wind.png")
 day_image_file = base_directory + weather_image_mapping.get(daya_weather, "Wind.png")
 dayb_image_file = base_directory + weather_image_mapping.get(dayb_weather, "Wind.png")
 
