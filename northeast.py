@@ -250,6 +250,29 @@ for paragraph in textbox8.paragraphs:
 
 # Define the base directory for the image files
 base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
+base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night/"
+
+# Define the dictionary mapping weather values to image file paths
+weather_image_mapping2 = {
+    "sky is clear": "Moon + Stars.png",
+    "moderate rain": "Rain.png",
+    "light rain": "Rain.png",
+    "overcast clouds": "Cloud.png",
+    "scattered clouds": "Night + Clouds.png",
+    "broken clouds": "Night + Clouds.png",
+    "few clouds": "Moon + Stars.png",
+    "heavy intensity rain": "Thunderstorm 2.png",
+    "clear sky": "Moon + Stars.png",
+    "partly cloudy": "Night + Clouds.png",
+    "sunny": "Moon + Stars.png",
+    "patchy rain possible": "Rain.png",
+    "heavy rain": "Thunderstorm 2.png",
+    "thunderstorm with rain": "Thunderstorm 2.png",
+    "thunderstorm with heavy rain": "Thunderstorm 2.png",
+    "drizzle": "Rain.png",
+    "light shower rain": "Rain.png"
+
+}
 
 # Define the dictionary mapping weather values to image file paths
 weather_image_mapping = {
@@ -267,7 +290,9 @@ weather_image_mapping = {
     "patchy rain possible": "Rain + Sun.png",
     "heavy rain": "Thunderstorm & Sun.png",
     "thunderstorm with rain": "Thunderstorm & Sun.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+    "thunderstorm with heavy rain": "Thunderstorm 2.png",
+    "drizzle": "Rain.png",
+    "light shower rain": "Rain.png"
 
     # Add more mappings for other weather conditions
 }
@@ -721,29 +746,7 @@ for paragraph in textbox103.paragraphs:
         run.font.bold = False  
     paragraph.alignment = PP_ALIGN.CENTER
 
-# Define the base directory for the image files
-base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
-base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night"
 
-weather_image_mapping2 = {
-    "sky is clear": "Moon + Stars.png",
-    "moderate rain": "Rain.png",
-    "light rain": "Rain.png",
-    "overcast clouds": "Cloud.png",
-    "scattered clouds": "Night + Clouds.png",
-    "broken clouds": "Night + Clouds.png",
-    "few clouds": "Moon + Stars.png",
-    "heavy intensity rain": "Thunderstorm 2.png",
-    "clear sky": "Moon + Stars.png",
-    "partly cloudy": "Night + Clouds.png",
-    "sunny": "Moon + Stars.png",
-    "patchy rain possible": "Rain.png",
-    "heavy rain": "Thunderstorm 2.png",
-    "thunderstorm with rain": "Thunderstorm 2.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
-
-    # Add more mappings for other weather conditions
-}
 
 # Assign image file paths based on weather values using the dictionary mapping
 daypart1_image_file = base_directory + weather_image_mapping.get(daypart1_weather, "Wind.png")
@@ -992,30 +995,6 @@ for paragraph in textbox8.paragraphs:
 
 #IMAGE CODING HERE
 
-
-# Define the base directory for the image files
-base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
-
-# Define the dictionary mapping weather values to image file paths
-weather_image_mapping = {
-    "sky is clear": "Sun 3.png",
-    "moderate rain": "Rain.png",
-    "light rain": "Rain + Sun.png",
-    "overcast clouds": "Cloud.png",
-    "scattered clouds": "Sun & Clouds.png",
-    "broken clouds": "Sun & Clouds.png",
-    "few clouds": "Sun 3.png",
-    "heavy intensity rain": "Thunderstorm & Sun.png",
-    "clear sky": "Sun 3.png",
-    "partly cloudy": "Sun & Clouds.png",
-    "sunny": "Sun 3.png",
-    "patchy rain possible": "Rain + Sun.png",
-    "heavy rain": "Thunderstorm & Sun.png",
-    "thunderstorm with rain": "Thunderstorm & Sun.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
-
-    # Add more mappings for other weather conditions
-}
 
 # Assign image file paths based on weather values using the dictionary mapping
 nyc_image_file = base_directory + weather_image_mapping.get(nyc_weather, "Wind.png")
@@ -1293,6 +1272,12 @@ for slide in presentation.slides:
         elif shape.name == "columbus_sun":
             shape.element.getparent().remove(shape.element)
             slide.shapes.add_picture(col_sun, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "newyork_sat":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(nyc_sat, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "newyork_sun":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(nyc_sun, shape.left, shape.top, shape.width, shape.height)
 
 #THIS UPDATES THE PRESENTATION
 updated_powerpoint_file_path = "/Users/erick/Desktop/Weather_Update.pptx"

@@ -28,6 +28,7 @@ powerpoint_file_path = "/Users/erick/Desktop/Graphics_Templates/email_template.p
 csv_file_path = "/Users/erick/Desktop/day_part_data.csv"
 csv_file_path2 = "/Users/erick/Desktop/city_high_and Lows.csv"
 csv_file_path3 = "/Users/erick/Desktop/new york_7_day_forecast.csv"
+csv_file_path4 = "/Users/erick/Desktop/city_high_and Lows_added.csv"
 
 
 # Set the slide index and text box index of the PowerPoint slide to update
@@ -37,11 +38,13 @@ slide_index2 = 1
 slide_index3 = 2
 slide_index4 = 3
 slide_index5 = 4
+slide_index6 = 7
 
 #READ THE DATA
 data = pd.read_csv(csv_file_path)
 data2 = pd.read_csv(csv_file_path2)
 data3 = pd.read_csv(csv_file_path3)
+data4 = pd.read_csv(csv_file_path4)
 
 
 
@@ -66,17 +69,17 @@ daypart14_value = str(data2.iloc[22,3])
 
 
 #DAYPART WEATHER
-daypart1_weather = str(data.iloc[0,1])
-daypart2_weather = str(data.iloc[0,2])
-daypart3_weather = str(data.iloc[0,3])
-daypart4_weather = str(data.iloc[0,4])
-daypart5_weather = str(data.iloc[0,5])
+daypart1_weather = str(data.iloc[0,2])
+daypart2_weather = str(data.iloc[0,3])
+daypart3_weather = str(data.iloc[0,4])
+daypart4_weather = str(data.iloc[0,5])
+daypart5_weather = str(data.iloc[0,6])
 
-daypart6_weather = str(data.iloc[2,1])
-daypart7_weather = str(data.iloc[2,2])
-daypart8_weather = str(data.iloc[2,3])
-daypart9_weather = str(data.iloc[2,4])
-daypart10_weather = str(data.iloc[2,5])
+daypart6_weather = str(data.iloc[2,2])
+daypart7_weather = str(data.iloc[2,3])
+daypart8_weather = str(data.iloc[2,4])
+daypart9_weather = str(data.iloc[2,5])
+daypart10_weather = str(data.iloc[2,6])
 
 daya_weather = str(data2.iloc[27,4])
 dayb_weather = str(data2.iloc[22,4])
@@ -125,6 +128,32 @@ app_value_gc = str(data2.iloc[17, 7])
 app_value_lb = str(data2.iloc[21, 7])
 app_value_bs = str(data2.iloc[3, 7])
 
+#NATIONAL MAP HIGHS
+bos_temp_value = str(data2.iloc[4, 2])
+nyc_temp_value = str(data2.iloc[27, 2])
+chi_temp_value = str(data2.iloc[11, 2])
+atl_temp_value = str(data2.iloc[1, 2])
+mia_temp_value = str(data2.iloc[24, 2])
+dal_temp_value = str(data2.iloc[14, 2])
+min_temp_value = str(data2.iloc[25, 2])
+lax_temp_value = str(data2.iloc[22, 2])
+den_temp_value = str(data4.iloc[0, 2])
+sf_temp_value = str(data4.iloc[1, 2])
+stl_temp_value = str(data4.iloc[2, 2])
+
+#NATIONAL MAP WEATHER ICONS
+bos_wx = str(data2.iloc[4, 4])
+nyc_wx = str(data2.iloc[27, 4])
+chi_wx= str(data2.iloc[11, 4])
+atl_wx = str(data2.iloc[1, 4])
+mia_wx = str(data2.iloc[24, 4])
+dal_wx = str(data2.iloc[14, 4])
+min_wx = str(data2.iloc[25, 4])
+lax_wx = str(data2.iloc[22, 4])
+den_wx = str(data4.iloc[0, 4])
+sf_wx = str(data4.iloc[1, 4])
+stl_wx = str(data4.iloc[2, 4])
+
 #IMAGE MAPPING
 # Define the base directory for the image files
 base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
@@ -145,7 +174,10 @@ weather_image_mapping2 = {
     "patchy rain possible": "Rain.png",
     "heavy rain": "Thunderstorm 2.png",
     "thunderstorm with rain": "Thunderstorm 2.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+    "thunderstorm with heavy rain": "Thunderstorm 2.png",
+    "drizzle": "Rain.png",
+    "light shower rain": "Rain.png"
+
 }
 
 # Define the dictionary mapping weather values to image file paths
@@ -164,7 +196,9 @@ weather_image_mapping = {
     "patchy rain possible": "Rain + Sun.png",
     "heavy rain": "Thunderstorm & Sun.png",
     "thunderstorm with rain": "Thunderstorm & Sun.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+    "thunderstorm with heavy rain": "Thunderstorm 2.png",
+    "drizzle": "Rain.png",
+    "light shower rain": "Rain.png"
 
     # Add more mappings for other weather conditions
 }
@@ -833,6 +867,200 @@ for paragraph in textbox9.paragraphs:
         run.font.color.rgb = RGBColor(139, 0, 0)
         run.font.bold = True 
     paragraph.alignment = PP_ALIGN.CENTER
+
+
+#UPDATES SLIDE NUMBER 9 - INDEX SLIDE 8
+
+slide = presentation.slides[slide_index6]
+
+bos_temp = 42  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxa = slide.shapes[bos_temp].text_frame
+
+nyc_temp = 2  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxb = slide.shapes[nyc_temp].text_frame
+
+chi_temp = 6  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxc = slide.shapes[chi_temp].text_frame
+
+atl_temp = 18  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxd = slide.shapes[atl_temp].text_frame
+
+mia_temp = 38  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxe = slide.shapes[mia_temp].text_frame
+
+dal_temp = 14  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxf = slide.shapes[dal_temp].text_frame
+
+min_temp = 22  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxg = slide.shapes[min_temp].text_frame
+
+lax_temp = 10  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxh = slide.shapes[lax_temp].text_frame
+
+den_temp = 26  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxi = slide.shapes[den_temp].text_frame
+
+sf_temp = 34  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxj = slide.shapes[sf_temp].text_frame
+
+stl_temp = 30  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxk = slide.shapes[stl_temp].text_frame
+
+#CLEAR TEXT, ADD NEW VALUES
+textboxa.clear()
+textboxa.text = bos_temp_value
+textboxb.clear()
+textboxb.text = nyc_temp_value
+textboxc.clear()
+textboxc.text = chi_temp_value
+textboxd.clear()
+textboxd.text = atl_temp_value
+textboxe.clear()
+textboxe.text = mia_temp_value
+textboxf.clear()
+textboxf.text = dal_temp_value
+textboxg.clear()
+textboxg.text = min_temp_value
+textboxh.clear()
+textboxh.text = lax_temp_value
+textboxi.clear()
+textboxi.text = den_temp_value
+textboxj.clear()
+textboxj.text = sf_temp_value
+textboxk.clear()
+textboxk.text = stl_temp_value
+
+#FORMATTING NEW TEXT
+
+
+for paragraph in textboxa.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxb.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxc.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True  
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxd.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True  
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxe.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxf.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(54)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxg.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(54)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True  
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxh.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(54)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True   
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxi.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(54)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxj.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(54)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True  
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textboxk.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(54)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True   
+    paragraph.alignment = PP_ALIGN.CENTER
+
+# Assign image file paths based on weather values using the dictionary mapping
+bos_image_file = base_directory + weather_image_mapping.get(bos_wx, "Wind.png")
+ny_image_file = base_directory + weather_image_mapping.get(nyc_wx, "Wind.png")
+chi_image_file = base_directory + weather_image_mapping.get(chi_wx, "Wind.png")
+mia_image_file = base_directory + weather_image_mapping.get(mia_wx, "Wind.png")
+atl_image_file = base_directory + weather_image_mapping.get(atl_wx, "Wind.png")
+min_image_file = base_directory + weather_image_mapping.get(min_wx, "Wind.png")
+lax_image_file = base_directory + weather_image_mapping.get(lax_wx, "Wind.png")
+dal_image_file = base_directory + weather_image_mapping.get(dal_wx, "Wind.png")
+den_image_file = base_directory + weather_image_mapping.get(den_wx, "Wind.png")
+sf_image_file = base_directory + weather_image_mapping.get(sf_wx, "Wind.png")
+stl_image_file = base_directory + weather_image_mapping.get(stl_wx, "Wind.png")
+
+
+# Iterate through the slides and replace images
+for slide in presentation.slides:
+    for shape in slide.shapes:
+        if shape.name == "bos_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(bos_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "ny_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(ny_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "chi_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(chi_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "mia_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(mia_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "atl_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(atl_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "min_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(min_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "lax_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(lax_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "dal_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(dal_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "den_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(den_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "sanfran_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(sf_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "stl_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(stl_image_file, shape.left, shape.top, shape.width, shape.height)
+
 
 #THIS UPDATES THE PRESENTATION
 updated_powerpoint_file_path = "/Users/erick/Desktop/Wx Email Graphics.pptx"

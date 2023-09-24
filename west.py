@@ -74,6 +74,28 @@ sba_weather = str(data.iloc[37,4])
 #IMAGE MAPPING
 # Define the base directory for the image files
 base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
+base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night/"
+
+weather_image_mapping2 = {
+    "sky is clear": "Moon + Stars.png",
+    "moderate rain": "Rain.png",
+    "light rain": "Rain.png",
+    "overcast clouds": "Cloud.png",
+    "scattered clouds": "Night + Clouds.png",
+    "broken clouds": "Night + Clouds.png",
+    "few clouds": "Moon + Stars.png",
+    "heavy intensity rain": "Thunderstorm 2.png",
+    "clear sky": "Moon + Stars.png",
+    "partly cloudy": "Night + Clouds.png",
+    "sunny": "Moon + Stars.png",
+    "patchy rain possible": "Rain.png",
+    "heavy rain": "Thunderstorm 2.png",
+    "thunderstorm with rain": "Thunderstorm 2.png",
+    "thunderstorm with heavy rain": "Thunderstorm 2.png",
+    "drizzle": "Rain.png",
+    "light shower rain": "Rain.png"
+
+}
 
 # Define the dictionary mapping weather values to image file paths
 weather_image_mapping = {
@@ -91,11 +113,12 @@ weather_image_mapping = {
     "patchy rain possible": "Rain + Sun.png",
     "heavy rain": "Thunderstorm & Sun.png",
     "thunderstorm with rain": "Thunderstorm & Sun.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+    "thunderstorm with heavy rain": "Thunderstorm 2.png",
+    "drizzle": "Rain.png",
+    "light shower rain": "Rain.png"
 
     # Add more mappings for other weather conditions
 }
-
 # Assign image file paths based on weather values using the dictionary mapping
 los_image_file = base_directory + weather_image_mapping.get(los_weather, "Wind.png")
 san_image_file = base_directory + weather_image_mapping.get(san_weather, "Wind.png")
@@ -584,28 +607,6 @@ for paragraph in textbox103.paragraphs:
         run.font.bold = False  
     paragraph.alignment = PP_ALIGN.CENTER
 
-# Define the base directory for the image files
-base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
-
-base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night/"
-
-weather_image_mapping2 = {
-    "sky is clear": "Moon + Stars.png",
-    "moderate rain": "Rain.png",
-    "light rain": "Rain.png",
-    "overcast clouds": "Cloud.png",
-    "scattered clouds": "Night + Clouds.png",
-    "broken clouds": "Night + Clouds.png",
-    "few clouds": "Moon + Stars.png",
-    "heavy intensity rain": "Thunderstorm 2.png",
-    "clear sky": "Moon + Stars.png",
-    "partly cloudy": "Night + Clouds.png",
-    "sunny": "Moon + Stars.png",
-    "patchy rain possible": "Rain.png",
-    "heavy rain": "Thunderstorm 2.png",
-    "thunderstorm with rain": "Thunderstorm 2.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
-}
 
 # Assign image file paths based on weather values using the dictionary mapping
 daypart1_image_file = base_directory + weather_image_mapping.get(daypart1_weather, "Wind.png")

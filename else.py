@@ -28,6 +28,7 @@ from pptx.enum.text import PP_ALIGN
 # Set the file paths
 powerpoint_file_path = "/Users/erick/Desktop/Graphics_Templates/template_elsewhere.pptx"
 csv_file_path = "/Users/erick/Desktop/city_high_and Lows.csv"
+csv_file_pathb = "/Users/erick/Desktop/city_high_and Lows_added.csv"
 csv_file_path2 = "/Users/erick/Desktop/grand rapids_7_day_forecast.csv"
 csv_file_path3 = "/Users/erick/Desktop/day_part_data.csv"
 csv_file_path4 = "/Users/erick/Desktop/fort lauderdale_7_day_forecast.csv"
@@ -37,15 +38,16 @@ csv_file_path5 = "/Users/erick/Desktop/charlotte_7_day_forecast.csv"
 
 # Set the slide index and text box index of the PowerPoint slide to update
  # REMINDER: Slide index is 0-based, so slide 7 corresponds to index 6
-slide_index = 4 
-slide_index2 = 8
-slide_index3 = 9
-slide_index4 = 5
-slide_index5 = 11
-slide_index6 = 6
-slide_index7 = 7
-slide_index8 = 10
-slide_index9 = 12
+slide_index = 4 #Great Lakes Forecast
+slide_index2 = 9 #Southeast Forecast
+slide_index3 = 10 #Deep South Forecast
+slide_index4 = 6 #Grand Rapids Daypart
+slide_index5 = 12 #Fort Lauderdale Day Part
+slide_index6 = 7 #Grand Rapids 7 Day
+slide_index7 = 8 #Chicago 7 Day
+slide_index8 = 11 #Charlotte 7 Day
+slide_index9 = 13 #Fort Lauderdale 7 Day
+slide_index10 = 5 #Ohio River Forecast
 
 #DATA SOURCE
 data = pd.read_csv(csv_file_path)
@@ -53,6 +55,7 @@ data2 = pd.read_csv(csv_file_path2)
 data3 = pd.read_csv(csv_file_path3)
 data4 = pd.read_csv(csv_file_path4)
 data5 = pd.read_csv(csv_file_path5)
+data6 = pd.read_csv(csv_file_pathb)
 
 
 #ASSIGN ALL CELL VALUES
@@ -74,6 +77,11 @@ cell_value_dal = str(data.iloc[14, 2])
 cell_value_new = str(data.iloc[26, 2])
 cell_value_tam = str(data.iloc[40, 2])
 cell_value_mia = str(data.iloc[24, 2])
+cell_value_pitt = str(data6.iloc[3, 2])
+cell_value_roa = str(data6.iloc[4, 2])
+cell_value_nash = str(data6.iloc[2, 2])
+cell_value_lou = str(data6.iloc[1, 2])
+cell_value_stl = str(data6.iloc[5, 2])
 
 #DAYPART TEMPS
 daypart1_value = str(data3.iloc[5, 1])
@@ -101,10 +109,15 @@ mem_weather = str(data.iloc[23,4])
 dal_weather = str(data.iloc[14,4])
 new_weather = str(data.iloc[26,4])
 mia_weather = str(data.iloc[24,4])
+pitt_weather = str(data6.iloc[3,4])
+roa_weather = str(data6.iloc[4,4])
+lou_weather = str(data6.iloc[1,4])
+nash_weather = str(data6.iloc[2,4])
+stl_weather = str(data6.iloc[5,4])
 
 #DAYPART WEATHER
 daypart1_weather = str(data3.iloc[4,1])
-daypart2_weather = str(data2.iloc[4,4])
+daypart2_weather = str(data3.iloc[4,4])
 daypart3_weather = str(data3.iloc[4,6])
 
 daypart4_weather = str(data3.iloc[6,1])
@@ -133,7 +146,10 @@ weather_image_mapping2 = {
     "patchy rain possible": "Rain.png",
     "heavy rain": "Thunderstorm 2.png",
     "thunderstorm with rain": "Thunderstorm 2.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+    "thunderstorm with heavy rain": "Thunderstorm 2.png",
+    "drizzle": "Rain.png",
+    "light shower rain": "Rain.png"
+
 }
 
 # Define the dictionary mapping weather values to image file paths
@@ -152,7 +168,9 @@ weather_image_mapping = {
     "patchy rain possible": "Rain + Sun.png",
     "heavy rain": "Thunderstorm & Sun.png",
     "thunderstorm with rain": "Thunderstorm & Sun.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
+    "thunderstorm with heavy rain": "Thunderstorm 2.png",
+    "drizzle": "Rain.png",
+    "light shower rain": "Rain.png"
 
     # Add more mappings for other weather conditions
 }
@@ -613,33 +631,11 @@ for paragraph in textbox106.paragraphs:
         run.font.bold = False  
     paragraph.alignment = PP_ALIGN.CENTER
 
-# Define the base directory for the image files
-base_directory = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons/"
-
-base_directory2 = "/Users/erick/Desktop/Weather_Graphics/Simple Weather Icons/weather_icons_night/"
-
-weather_image_mapping2 = {
-    "sky is clear": "Moon + Stars.png",
-    "moderate rain": "Rain.png",
-    "light rain": "Rain.png",
-    "overcast clouds": "Cloud.png",
-    "scattered clouds": "Night + Clouds.png",
-    "broken clouds": "Night + Clouds.png",
-    "few clouds": "Moon + Stars.png",
-    "heavy intensity rain": "Thunderstorm 2.png",
-    "clear sky": "Moon + Stars.png",
-    "partly cloudy": "Night + Clouds.png",
-    "sunny": "Moon + Stars.png",
-    "patchy rain possible": "Rain.png",
-    "heavy rain": "Thunderstorm 2.png",
-    "thunderstorm with rain": "Thunderstorm 2.png",
-    "thunderstorm with heavy rain": "Thunderstorm 2.png"
-}
 
 # Assign image file paths based on weather values using the dictionary mapping
-daypart1_image_file = base_directory + weather_image_mapping.get(daypart1_weather, "Wind.png")
-daypart2_image_file = base_directory + weather_image_mapping.get(daypart2_weather, "Wind.png")
-daypart3_image_file = base_directory2 + weather_image_mapping2.get(daypart3_weather, "Wind.png")
+daypart4_image_file = base_directory + weather_image_mapping.get(daypart4_weather, "Wind.png")
+daypart5_image_file = base_directory + weather_image_mapping.get(daypart5_weather, "Wind.png")
+daypart6_image_file = base_directory2 + weather_image_mapping2.get(daypart6_weather, "Wind.png")
 
 
 
@@ -648,13 +644,13 @@ for slide in presentation.slides:
     for shape in slide.shapes:
         if shape.name == "daypart1b":
             shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(daypart1_image_file, shape.left, shape.top, shape.width, shape.height)
+            slide.shapes.add_picture(daypart4_image_file, shape.left, shape.top, shape.width, shape.height)
         elif shape.name == "daypart2b_icon":
             shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(daypart2_image_file, shape.left, shape.top, shape.width, shape.height)
+            slide.shapes.add_picture(daypart5_image_file, shape.left, shape.top, shape.width, shape.height)
         elif shape.name == "daypart3b_icon":
             shape.element.getparent().remove(shape.element)
-            slide.shapes.add_picture(daypart3_image_file, shape.left, shape.top, shape.width, shape.height)
+            slide.shapes.add_picture(daypart6_image_file, shape.left, shape.top, shape.width, shape.height)
 
 slide = presentation.slides[slide_index6]
 
@@ -697,8 +693,141 @@ for slide in presentation.slides:
             slide.shapes.add_picture(fll_7day, shape.left, shape.top, shape.width, shape.height)
 
 
+#OHIO VALLEY SIDE
+slide = presentation.slides[slide_index10]
 
 
+pitt = 4  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox14 = slide.shapes[pitt].text_frame
+
+cin = 7  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox15 = slide.shapes[cin].text_frame
+
+roa = 19  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox16 = slide.shapes[roa].text_frame
+
+lou = 16  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox17 = slide.shapes[lou].text_frame
+
+nash = 10  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox18 = slide.shapes[nash].text_frame
+
+mem2 = 21  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textboxz = slide.shapes[mem2].text_frame
+
+stl = 13  # Textbox index is 0-based, so textbox 9 corresponds to index 8
+textbox20 = slide.shapes[stl].text_frame
+
+
+#CLEAR TEXT, ADD NEW VALUES
+textbox14.clear()
+textbox14.text = cell_value_pitt
+textbox15.clear()
+textbox15.text = cell_value_cinn
+textbox16.clear()
+textbox16.text = cell_value_roa
+textbox17.clear()
+textbox17.text = cell_value_lou
+textbox18.clear()
+textbox18.text = cell_value_nash
+textboxz.clear()
+textboxz.text = cell_value_mem
+textbox20.clear()
+textbox20.text = cell_value_stl
+
+#FORMATTING NEW TEXT
+
+
+for paragraph in textbox14.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox15.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox16.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox17.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox18.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+
+for paragraph in textboxz.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox20.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+for paragraph in textbox21.paragraphs:
+    for run in paragraph.runs:
+        run.font.size = Pt(48)  # Set font size to 48 points
+        run.font.color.rgb = RGBColor(0, 32, 96)
+        run.font.bold = True 
+    paragraph.alignment = PP_ALIGN.CENTER
+
+# Assign image file paths based on weather values using the dictionary mapping
+cin_image_file = base_directory + weather_image_mapping.get(cin_weather, "Wind.png")
+pitt_image_file = base_directory + weather_image_mapping.get(pitt_weather, "Wind.png")
+roa_image_file = base_directory + weather_image_mapping.get(roa_weather, "Wind.png")
+lou_image_file = base_directory + weather_image_mapping.get(cin_weather, "Wind.png")
+nash_image_file = base_directory + weather_image_mapping.get(nash_weather, "Wind.png")
+mem_image_file = base_directory + weather_image_mapping.get(mem_weather, "Wind.png")
+stl_image_file = base_directory + weather_image_mapping.get(stl_weather, "Wind.png")
+
+for slide in presentation.slides:
+    for shape in slide.shapes:
+        if shape.name == "cin_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(cin_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "pitt_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(pitt_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "roa_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(roa_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "lou_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(lou_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "nash_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(nash_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "mem_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(mem_image_file, shape.left, shape.top, shape.width, shape.height)
+        elif shape.name == "stl_icon":
+            shape.element.getparent().remove(shape.element)
+            slide.shapes.add_picture(stl_image_file, shape.left, shape.top, shape.width, shape.height)
+        
 #THIS UPDATES THE PRESENTATION
 updated_powerpoint_file_path = "/Users/erick/Desktop/Weather_Elsewhere.pptx"
 presentation.save(updated_powerpoint_file_path)

@@ -743,5 +743,71 @@ df["Daily Precip"] = df["Daily Precip"].round(2)
 
 df.to_csv('city_high_and Lows.csv')
 
+#CODE TO MAKE NEW CSV FOR ADDED CITIES 
+
+city_list_added = ["seattle", "san francisco", "denver", "saint louis, mo", "nashville", "louisville", "roanoke", "pittsburgh"]
+url = "https://api.weatherbit.io/v2.0/forecast/daily"
+key = "85a65933d3894f0d9c7194ffa8098565"
+units = "&units=I"
+
+url_list_added = []
+
+for city in city_list_added:
+    city=city
+
+    final_url = final_url = f"{url}?city={city}{units}&key={key}"
+    url_list_added.append(final_url)
+
+    
+city_name = []
+high_temp = []
+low_temp= []
+weather = []
+pop = []
+daily_precip = []
+time_stamp = []
+ts = []
+high2 = []
+high3 = []
+weather2 = []
+weather3 = []
+apparent_T = []
+    
+for url in range(len(url_list_added)):
+    forecast = requests.get(url_list_added[url]).json()
+    city_name.append(forecast['city_name'])
+    high = forecast['data'][1]['max_temp']
+    high_temp.append(round(high))
+    low = forecast['data'][1]['min_temp']
+    low_temp.append(round(low))    
+    pop.append(forecast['data'][1]['pop'])
+    daily_precip.append(forecast['data'][1]['precip'])
+    weather.append((forecast['data'][1]['weather']['description']).lower())
+    high2.append(round(forecast['data'][2]['max_temp']))
+    high3.append(round(forecast['data'][3]['max_temp']))
+    weather2.append((forecast['data'][2]['weather']['description']).lower())
+    weather3.append((forecast['data'][3]['weather']['description']).lower())
+    apparent_T.append(round(forecast['data'][1]['app_max_temp']))
+    
+df2 = pd.DataFrame({
+    "City": city_name,
+    "Today High": high_temp,
+    "Tonight Low": low_temp,
+    "Weather": weather,
+    "Daily Precip": daily_precip,
+    "POP": pop,
+    "Apparent T": apparent_T,
+    "Tomorrow High": high2,
+    "Tomorrow Weather": weather2,
+    "Next Next High": high3,
+    "Next Next Weather": weather3
+}
+)
+
+df2 = df2.sort_values('City')
+df2["Daily Precip"] = df2["Daily Precip"].round(2)
+
+df2.to_csv('city_high_and Lows_added.csv')
+
 
 # %%
